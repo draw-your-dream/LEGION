@@ -1,9 +1,10 @@
 export MASTER_PORT=12346
+export PYTHONPATH=.
 
 deepspeed --master_port $MASTER_PORT scripts/loc_exp/train.py \
-  --version '/path/to/GLaMM-GranD-Pretrained' \
+  --version '/home/picaa/models/MBZUAI/GLaMM-GranD-Pretrained' \
   --dataset_dir ./data/ \
-  --vision_pretrained /path/to/sam/pretrained/weights \
+  --vision_pretrained /home/picaa/models/sam_vit_h_4b8939.pth \
   --exp_name 'Legion' \
   --lora_r 8 \
   --lr 1e-4 \
