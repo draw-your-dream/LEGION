@@ -54,7 +54,7 @@ def main():
     model.get_model().initialize_vision_modules(model.get_model().config)
     vision_tower = model.get_model().get_vision_tower()
     vision_tower.to(dtype=torch.bfloat16)
-    model.get_model().initialize_glamm_model(model.get_model().config)
+    model.get_model().initialize_legion_model(model.get_model().config)
     lora_r = args.lora_r
     if lora_r > 0:
         lora_config = setup_lora_config(model, args)

@@ -4,7 +4,7 @@ import json
 import bleach
 import argparse
 from tqdm import tqdm
-from torch.utils.data import DataLoader, DistributedSampler
+from torch.utils.data import DataLoader, DistributedSampler,RandomSampler
 from transformers import AutoTokenizer, CLIPImageProcessor
 
 from eval.utils import *
@@ -147,7 +147,7 @@ if __name__ == "__main__":
     # Create DDP Dataset
     img_dir = args.image_dir
     dataset = GCGEvalDDP(img_dir)
-    distributed_sampler = DistributedSampler(dataset, rank=args.rank, shuffle=False)
+    distributed_sampler = RandomSampler(dataset)
     dataloader = DataLoader(dataset, batch_size=args.batch_size_per_gpu, num_workers=2,
                             sampler=distributed_sampler, collate_fn=custom_collate_fn)
     

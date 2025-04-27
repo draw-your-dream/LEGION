@@ -84,6 +84,10 @@ GCG_QUESTIONS = [
     'Could you provide me with a detailed analysis of this photo? Please output with interleaved segmentation masks for the corresponding parts of the answer.',
 ]
 
+LEGION_QUESTIONS = [
+    'Please provide a detailed analysis of artifacts in this photo, considering physical artifacts (e.g., optical display issues, violations of physical laws, and spatial/perspective errors), structural artifacts (e.g., deformed objects, asymmetry, or distorted text), and distortion artifacts (e.g., color/texture distortion, noise/blur, artistic style errors, and material misrepresentation). Output with interleaved segmentation masks for the corresponding parts of the answer.'
+]
+
 SEG_QUESTIONS = [
     "Can you segment the {class_name} in this image?",
     "Please segment {class_name} in this image.",

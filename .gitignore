@@ -2,3 +2,10 @@ data/
 
 # ignore all __pycache__ directory
 __pycache__/
+
+output**/
+wandb/
+train-output/
+
+*.zip
+*.tar.gz

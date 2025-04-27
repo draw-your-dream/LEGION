@@ -12,7 +12,7 @@ from transformers import CLIPImageProcessor
 from model.llava import conversation as conversation_lib
 from model.SAM.utils.transforms import ResizeLongestSide
 from tools.utils import DEFAULT_IMAGE_TOKEN
-from dataset.utils.utils import GCG_QUESTIONS
+from dataset.utils.utils import GCG_QUESTIONS, LEGION_QUESTIONS
 import pdb
 
 class GCGBaseDataset(torch.utils.data.Dataset):
@@ -35,7 +35,7 @@ class GCGBaseDataset(torch.utils.data.Dataset):
         self.validation = validation
         self.random_sampling = random_sampling
 
-        self.question_templates = GCG_QUESTIONS
+        self.question_templates = LEGION_QUESTIONS
         self.begin_str = f"""The {DEFAULT_IMAGE_TOKEN} provides an overview of the picture.\n"""
         self.validation = validation
 

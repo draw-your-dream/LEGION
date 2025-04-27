@@ -448,8 +448,8 @@ def main(args):
 
     best_giou, best_ciou, best_val_loss = 0.0, 0.0, np.inf
     for epoch in range(args.start_epoch, args.epochs):
-        # if epoch >= 1:
-        #     break
+        if epoch >= 1:
+            break
 
         random.seed(epoch_seeds[epoch])
 
@@ -502,7 +502,7 @@ def train(active_datasets, model, epoch, scheduler, writer, dataset_iters, args,
 
     def log_progress():
         """Log training progress."""
-        if global_step % 500 == 0:
+        if global_step % 100 == 0:
             avg_losses = validate_model_performance(val_loader, model, epoch, writer, args)
             if args.wandb_log and args.local_rank == 0:
                 wandb.log({
