@@ -41,8 +41,12 @@ class GCGBaseDataset(torch.utils.data.Dataset):
 
         # Defining paths
         self.base_dir = dataset_dir
-        self.image_folder = os.path.join(image_dir)
-        self.ann_file = os.path.join(self.base_dir, "train", "annotations", json_path)
+        if json_path == 'test.json':
+            self.image_folder = os.path.join(self.base_dir, "test", image_dir)
+            self.ann_file = os.path.join(self.base_dir, "test", "annotations", json_path)
+        else:
+            self.image_folder = os.path.join(self.base_dir, "train", image_dir)
+            self.ann_file = os.path.join(self.base_dir, "train", "annotations", json_path)
         with open(self.ann_file, "r") as file:
             datas = json.load(file)
         self.epoch_samples = len(datas)
@@ -162,7 +166,7 @@ class LegionGCGDataset(GCGBaseDataset):
                  image_size=512, num_classes_per_sample=3, validation=False, random_sampling=True):
         json_files = {'validation': "test.json", 'training': "train.json"}
         json_path = json_files['validation'] if validation else json_files['training']
-        image_dir = ''
+        image_dir = 'images'
         mode = "Val" if validation else "Train"
         epoch_samples = epoch_samples
         super().__init__(
